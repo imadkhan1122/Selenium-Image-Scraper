@@ -24,7 +24,7 @@ options.add_experimental_option("prefs",prefs)
 options.add_argument('--headless')
 
 def download_images(pth, dir_):
-    r = requests.get(pth)
+    r = requests.get(pth, timeout=60)
     pth, name = os.path.split(pth)
     t = str(datetime.now().time())
     name = dir_+'/'+t+'-'+name
