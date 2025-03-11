@@ -6,10 +6,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-import requests
 import time
 import os
 from datetime import datetime
+from security import safe_requests
 
 options = Options()
 # options.add_argument('start-maximized')
@@ -24,7 +24,7 @@ options.add_experimental_option("prefs",prefs)
 options.add_argument('--headless')
 
 def download_images(pth, dir_):
-    r = requests.get(pth)
+    r = safe_requests.get(pth)
     pth, name = os.path.split(pth)
     t = str(datetime.now().time())
     name = dir_+'/'+t+'-'+name
